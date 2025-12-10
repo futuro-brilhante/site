@@ -1,0 +1,203 @@
+/* As Cores que vamos usar:
+   Azul Principal: #0077b6 (Azul Escuro, forte)
+   Amarelo Destaque: #ffc300 (Amarelo vivo)
+   Azul Claro (Fundo): #90e0ef
+*/
+
+/* Reset Básico para começar bem */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif; /* Fonte simples e fácil de ler */
+}
+
+body {
+    background-color:#0A1C49; /* Fundo azul bem clarinho */
+    color: #036aa2; /* Cor principal do texto: Azul Escuro */
+    line-height: 1.6;
+    padding-bottom: 50px; 
+}
+
+/* --- Cabeçalho --- */
+.cabecalho {
+    background-color: #0077b6;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #FFA500;
+}
+
+/* --- Seções e Cards (Containers de Conteúdo) --- */
+section {
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+section h2 {
+    color: #f9d970; 
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Mantém o texto dentro do card alinhado à esquerda */
+}
+
+/* --- Estilos Comuns para Formulários e Campos --- */
+label {
+    display: block; 
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #0077b6;
+}
+
+/* Seletor atualizado para incluir todos os tipos de input necessários */
+input[type="text"], 
+input[type="email"], 
+input[type="tel"],
+input[type="password"] { 
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px; /* Reduzi um pouco a margem para caber mais campos */
+    border: 2px solid #90e0ef;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="tel"]:focus,
+input[type="password"]:focus {
+    border-color: #ffc300; 
+    outline: none; 
+}
+
+/* --- Estilo Comum para Botões e Links de Botão --- */
+.botao-azul, .botao-amarelo, button[type="submit"], .botao-retorno {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s; 
+    font-size: 1.1em;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+/* --- Botão de Cadastro (Diferenciação no formulário) --- */
+.botao-cadastro {
+    width: 100%; /* Faz o botão de cadastro ocupar toda a largura */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Estilo do link de "Fazer Login" */
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.link-amarelo {
+    color: #2f2f2f; /* Link em amarelo */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-amarelo:hover {
+    text-decoration: underline; /* Sublinha ao passar o mouse */
+}
+
+
+/* --- Botões de Resposta Simples (Seção 2) --- */
+.botoes-resposta {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+/* Estilo do botão Amarelo */
+.botao-amarelo {
+    background-color: #dfc043;
+    color: #0077b6;
+}
+
+.botao-amarelo:hover {
+    background-color: #ffda66;
+}
+
+/* Estilo do botão Azul */
+.botao-azul {
+    background-color: #0077b6;
+    color: white;
+}
+
+.botao-azul:hover {
+    background-color: #005a8b;
+}
+
+
+/* --- Botão de Retorno (Seção 3) --- */
+.secao-retorno .card {
+    text-align: center;
+}
+
+.botao-retorno {
+    background-color: #6e90e6;
+    color: #ffffff; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 3px solid #005a8b; 
+}
+
+.botao-retorno:hover {
+    background-color: #c59eef;  
+    color: #1b1b1b;
+    border-color: #2e0048;
+}
+
+.mensagem-final {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    border-top: 2px dashed #ffc300; 
+    font-size: 1.1em;
+}
+
+
+
+
+/* --- Rodapé --- */
+.rodape {
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
+}
+
+/* Ajuste para telas muito pequenas (Responsividade) */
+@media (max-width: 600px) {
+    .cabecalho h1 {
+        font-size: 1.5em;
+    }
+    .botoes-resposta {
+        flex-direction: column; 
+    }
+    .botoes-resposta button {
+        margin: 5px 0;
+    }
+}

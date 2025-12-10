@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Alfabetização Simples</title>
+    <link rel="stylesheet" href="avaliação.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Teste Rápido de Leitura</h1>
+        <p>Escolha a palavra ou frase que melhor completa a ideia.</p>
+
+        <div id="quiz-section">
+            <div id="question-box">
+                <p id="question-text">Pergunta será carregada aqui...</p>
+            </div>
+            <div id="options-container">
+                </div>
+            <button id="next-button" class="btn btn-primary" style="display: none;">Próxima Pergunta</button>
+        </div>
+
+        <div id="result-section" style="display: none;">
+            <h2>✨ Seu Resultado ✨</h2>
+            <p id="score-text"></p>
+            <p id="feedback-message"></p>
+            <div class="result-actions">
+                <button id="restart-button" class="btn btn-golden">Refazer o Teste</button>
+                
+                <a href="index.html" class="btn btn-primary">Voltar para a Inicial</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="avaliação.js"></script>
+
+    
+</body>
+</html>

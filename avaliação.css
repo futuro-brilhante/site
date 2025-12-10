@@ -1,0 +1,187 @@
+/* Variáveis de Cores (Alto Contraste) */
+:root {
+    --azul-royal: #002266; 
+    --golden: #FFD700; 
+    --verde-acerto: #4CAF50;
+    --vermelho-erro: #F44336;
+    --fundo-claro: #F9F9F9;
+    --texto-principal: #333333;
+    --sombra-leve: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--fundo-claro);
+    color: var(--texto-principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: rgb(255, 248, 248);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(rgb(240, 240, 240));
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Animação de entrada do Container */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--azul-royal);
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+#question-box {
+    background-color: var(--azul-royal);
+    color: rgb(255, 248, 248);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Animação para cada nova pergunta */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+#options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option-btn {
+    padding: 15px;
+    border: 2px solid var(--azul-royal);
+    background-color: transparent;
+    color: var(--azul-royal);
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left; /* Melhora a legibilidade */
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: rgba(0, 37, 111, 0.1);
+}
+
+/* Estilos de Feedback */
+.option-btn.correct {
+    background-color: var(--verde-acerto);
+    color: white;
+    border-color: var(--verde-acerto);
+    animation: flashGreen 0.5s;
+}
+
+.option-btn.incorrect {
+    background-color: var(--vermelho-erro);
+    color: white;
+    border-color: var(--vermelho-erro);
+    animation: shake 0.5s;
+}
+
+/* Animações de Feedback */
+@keyframes flashGreen {
+    0%, 100% { background-color: var(--verde-acerto); }
+    50% { background-color: #5a975e; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* Estilos de Botão Comuns */
+.btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary { /* Botão Próxima Pergunta */
+    background-color: var(--azul-royal);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #001f55;
+}
+
+.btn-golden { /* Botão Refazer */
+    background-color: var(--golden);
+    color: var(--azul-royal);
+}
+
+.btn-golden:hover {
+    background-color: #e6c100;
+}
+
+/* Estilos da Seção de Resultado */
+#result-section {
+    padding: 30px 10px;
+}
+
+#score-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--verde-acerto);
+    margin: 15px 0;
+}
+
+#feedback-message {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+/* ---------------------------------
+AJUSTE DE RESULTADOS E BOTÕES
+--------------------------------- */
+
+/* Container para alinhar os botões na tela de resultado */
+.result-actions {
+    display: flex;
+    justify-content: center; /* Centraliza o grupo de botões */
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-top: 30px;
+}
+
+/* Garante que os botões dentro do result-actions tenham uma margem superior menor */
+.result-actions .btn {
+    margin-top: 0;
+}
+
+/* Responsividade: Empilha os botões em telas pequenas */
+@media (max-width: 500px) {
+    .result-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

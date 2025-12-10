@@ -1,0 +1,160 @@
+:root {
+    --bg:#f4f7ff; --text:#1b1b1b; --card:#fff;
+    --primary:#005ff9; --menu:#003e9b;
+}
+
+/* Dark Mode */
+body.dark {
+    --bg:#0d1117; --text:#e6e6e6; 
+    --card:#161b22; --primary:#3c74ad; --menu:#0b2446;
+}
+
+
+/* Geral */
+body{margin:0;font-family:Poppins,sans-serif;background:var(--bg);color:var(--text);transition:.3s}
+
+/* Header */
+header{
+    background:var(--primary);color:#fff;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;
+}
+
+.logo-area{display:flex;align-items:center;gap:10px}
+
+.avatar{
+    width:42px;height:42px;border-radius:50%;border:2px solid white;
+    object-fit:cover;cursor:pointer;
+}
+
+.actions{display:flex;gap:15px}
+button{background:none;border:none;color:white;font-size:22px;cursor:pointer}
+
+/* Conteúdo */
+.container{padding:20px}
+
+/* Grid */
+.grid{
+    display:grid;gap:15px;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+}
+
+.card{
+    background:var(--card);padding:18px;border-radius:18px;text-align:center;
+    box-shadow:0 4px 10px #0001;transition:.2s;transform:translateY(0)
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 6px 18px #0003}
+.card i{font-size:34px;color:var(--primary)}
+
+/* Progresso */
+.progresso-box{
+    background:var(--card);padding:18px;border-radius:16px;margin-bottom:22px;
+    box-shadow:0 3px 10px #0002;
+}
+.barra{
+    height:10px;background:#ffffff44;border-radius:8px;overflow:hidden;
+}
+.barra-progresso{
+    height:100%;width:60%;background:var(--primary);border-radius:8px;
+    transition:width .8s ease;
+}
+
+/* Menu inferior estilo aplicativo */
+.menu{
+    position:fixed;bottom:0;width:100%;background:var(--menu);
+    color:#fff;display:flex;justify-content:space-around;height:62px;
+    align-items:center;border-radius:20px 20px 0 0;box-shadow:0 -3px 15px #0004;
+}
+.menu i{font-size:23px;cursor:pointer;transition:.2s}
+.menu i:active{transform:scale(.85)}
+
+/* ===== Manutenção: estilo ===== */
+#maintenance { position: fixed; inset: 0; display: grid; place-items: center; z-index: 9999; }
+.maintenance-hidden { display: none; } /* usar para esconder inicialmente */
+
+.maintenance-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(6, 14, 30, 0.55);
+  display: grid; place-items: center; padding: 20px;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+
+.maintenance-card{
+  width: min(540px, 92%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: 14px;
+  padding: 26px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 12px 40px rgba(2,8,23,0.6);
+  border: 1px solid rgba(255,255,255,0.06);
+  transform-origin: center;
+  animation: floatIn .45s ease both;
+}
+
+/* Ampulheta */
+.hourglass-wrap{ display:flex;justify-content:center;margin-bottom:12px; color:#ffd34d; }
+.hourglass{ display:block; transform-origin:50% 50%; animation: hg-rotate 3s linear infinite; }
+
+/* glass stroke */
+.hourglass .glass{ stroke: currentColor; stroke-opacity: .9; }
+
+/* animação da areia — alterna opacidade para dar sensação de fluxo */
+.hourglass .sand-top { transform-origin: 50% 50%; animation: sand-top 3s linear infinite; transform-box: fill-box; }
+.hourglass .sand-bottom { transform-origin: 50% 50%; animation: sand-bottom 3s linear infinite; transform-box: fill-box; }
+.hourglass .sand-fall { animation: sand-fall 1s linear infinite; opacity: .9; }
+
+/* texto */
+.maintenance-title{ margin: 6px 0 4px; font-size: 1.6rem; color: white; }
+.maintenance-text{ margin: 0 0 16px; color: #dfe9fd; opacity:.95 }
+
+/* botão fechar */
+.maintenance-btn{
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight:600;
+  transition: transform .15s ease, background .15s;
+}
+.maintenance-btn:hover{ transform: translateY(-3px); background: rgba(255,255,255,0.12) }
+
+/* animações keyframes */
+@keyframes hg-rotate{
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(6deg); }
+  50%  { transform: rotate(0deg); }
+  75%  { transform: rotate(-6deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes sand-top{
+  0%   { transform: translateY(0) scaleY(1); opacity:1; }
+  45%  { transform: translateY(6px) scaleY(.85); opacity:.6; }
+  55%  { transform: translateY(-6px) scaleY(.6); opacity:.3; }
+  100% { transform: translateY(0) scaleY(1); opacity:1; }
+}
+@keyframes sand-bottom{
+  0%   { transform: translateY(0) scaleY(1); opacity:.2; }
+  45%  { transform: translateY(-6px) scaleY(1.35); opacity:0.9; }
+  55%  { transform: translateY(6px) scaleY(.9); opacity:1; }
+  100% { transform: translateY(0) scaleY(1); opacity:.2; }
+}
+@keyframes sand-fall{
+  0% { opacity: 1; transform: translateY(0) }
+  50% { opacity: 0.25; transform: translateY(6px) }
+  100% { opacity: 1; transform: translateY(0) }
+}
+
+@keyframes floatIn{
+  from { opacity:0; transform: translateY(6px) scale(.995) }
+  to   { opacity:1; transform: translateY(0) scale(1) }
+}
+
+/* adaptações para modo claro (se seu site usar variáveis) */
+@media (prefers-color-scheme: light) {
+  .maintenance-card{ color:#08224a; background: linear-gradient(180deg, #fff, #fbfdff); border:1px solid rgba(2,8,23,0.04); }
+  .hourglass-wrap{ color: #f2a900 }
+  .maintenance-btn{ color:#08224a; background: rgba(2,8,23,0.04); }
+}

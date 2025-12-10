@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuro Brilhante </title>
+    <link rel="stylesheet" href="pagina.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-area">
+            <a href="index.html" class="navbar-brand logo-link" id="logo-link">
+                <img src="img/logo.png" width="60" alt="" class="d-inline-block align-top"> 
+            </a>
+            <h2>Futuro Brilhante</h2>
+        </div>
+
+        <div class="actions">
+            <button id="darkToggle"><i class="bi bi-moon-stars"></i></button>
+            <button id="exit"><i class="bi bi-box-arrow-right"></i></button>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- PROGRESSO -->
+        <div class="progresso-box">
+            <h3>📊 Seu Progresso</h3>
+            <div class="barra">
+                <div class="barra-progresso" id="progresso"></div>
+            </div>
+            <p id="textoProgresso">60% concluído</p>
+        </div>
+
+        <!-- CARDS -->
+        <div class="grid">
+            <div class="card"><i class="bi bi-flag"></i>
+                <h3>Missão</h3>
+                <p>Continue seu aprendizado.</p>
+            </div>
+            <div class="card"><i class="bi bi-people"></i>
+                <h3>Comunidade</h3>
+                <p>Converse e compartilhe.</p>
+            </div>
+            <div class="card"><i class="bi bi-patch-check"></i>
+                <h3>Certificados</h3>
+                <p>Veja suas conquistas.</p>
+            </div>
+            <div class="card"><i class="bi bi-book"></i>
+                <h3>Biblioteca</h3>
+                <p>Recursos extras.</p>
+            </div>
+            <div class="card"><i class="bi bi-person-gear"></i>
+                <h3>Perfil</h3>
+                <p>Editar conta e avatar.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MENU MOBILE -->
+    <div class="menu">
+        <i class="bi bi-house"></i>
+        <i class="bi bi-people"></i>
+        <i class="bi bi-flag"></i>
+        <i class="bi bi-patch-check"></i>
+        <i class="bi bi-gear"></i>
+    </div>
+
+    <!-- ======= Componente: Manutenção (ampulheta girando) ======= -->
+<section id="maintenance" class="maintenance-hidden">
+  <div class="maintenance-backdrop" role="dialog" aria-modal="true" aria-label="Em manutenção">
+    <div class="maintenance-card">
+      <!-- SVG ampulheta animada -->
+      <div class="hourglass-wrap" aria-hidden="true">
+        <svg class="hourglass" viewBox="0 0 100 140" width="120" height="168" xmlns="http://www.w3.org/2000/svg">
+          <!-- superior -->
+          <path class="glass" d="M20 10 H80 L60 40 L60 55 L80 85 H20 L40 55 L40 40 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+          <!-- areia superior -->
+          <path class="sand-top" d="M30 25 Q50 15 70 25 Q58 40 42 40 Z" fill="currentColor" opacity="0.85"/>
+          <!-- areia fundo (acumulada) -->
+          <path class="sand-bottom" d="M30 95 Q50 110 70 95 Q58 85 42 85 Z" fill="currentColor" opacity="0.95"/>
+          <!-- fio (areia caindo) -->
+          <rect class="sand-fall" x="48.5" y="50" width="3" height="16" rx="1" fill="currentColor" />
+        </svg>
+      </div>
+
+      <h2 class="maintenance-title">Em manutenção</h2>
+      <p class="maintenance-text">Por favor, volte em breve.</p>
+
+      <button id="maintenance-close" class="maintenance-btn" aria-label="Fechar aviso">Fechar</button>
+    </div>
+  </div>
+</section>
+<!-- ======= FIM componente ======= -->
+
+
+    <script src="pagina.js"></script>
+</body>
+
+</html>

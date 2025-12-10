@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuro Brilhante - Login</title>
+    <style>
+        /* Estilos básicos para o Login */
+        :root {
+            --primary-color: #007bff; 
+            --secondary-color: #ffc107;
+            --card-bg: #fff;
+            --bg-color: #f8f9fa;
+            --sidebar-bg: #212529;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color);
+        }
+        
+        .login-container {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--secondary-color);
+            color: var(--sidebar-bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #e0a800;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-center">
+        <div class="login-container">
+            <div class="tabs">
+                <button class="tab-button active">Login</button>
+            </div>
+
+            <div id="login-section" class="form-section active">
+                <h2>Acessar Conta</h2>
+                <form id="loginForm"> 
+                    <div class="form-group">
+                        <label for="login-email">Email:</label>
+                        <input type="email" id="login-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Senha:</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <button type="submit" class="submit-button">Entrar</button>
+                    <p class="forgot-password">Esqueceu sua senha?</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Impede o recarregamento da página
+
+                    const email = document.getElementById('login-email').value;
+                    const senha = document.getElementById('login-password').value;
+                    
+                    // LÓGICA DE ACESSO LIVRE: Verifica apenas se os campos NÃO estão vazios.
+                    if (email && senha) {
+                        // Se estiverem preenchidos, redireciona para a nova página
+                        window.location.href = 'pagina.html'; 
+                    } else {
+                        // Se algum campo estiver vazio
+                        alert('Por favor, preencha todos os campos para continuar.');
+                    }
+                });
+            }
+
+            
+        });
+    </script>
+</body>
+</html>
