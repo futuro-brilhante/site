@@ -2,101 +2,134 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Comece Sua Jornada! 🚀</title>
-    <link rel="stylesheet" href="jornada.css">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro - Comece Sua Jornada! 🚀</title>
+  <link rel="stylesheet" href="jornada.css" />
+  <style>
+    /* Estilos mínimos para feedback rápido (você pode remover se já tiver no CSS) */
+    .mensagem {
+      margin-top: 12px;
+      font-size: 0.95rem;
+    }
+    .mensagem.sucesso { color: #0a7; }
+    .mensagem.erro { color: #d33; }
+    .botao-azul { cursor: pointer; }
+  </style>
 </head>
 
 <body>
 
-    <header class="cabecalho">
-        <h1>Bem-vindo(a)! Faça seu Cadastro 👋</h1>
-    </header>
+  <header class="cabecalho">
+    <h1>Bem-vindo(a)! Faça seu Cadastro 👋</h1>
+  </header>
 
-    <section class="secao-cadastro">
-        <h2>Passo 1: Se Registre para Iniciar 📝</h2>
-        <div class="card cadastro-card">
-            <form action="#" method="POST">
+  <section class="secao-cadastro">
+    <h2>Passo 1: Se Registre para Iniciar 📝</h2>
+    <div class="card cadastro-card">
+      <!-- note: action vazio porque lidamos com redirecionamento via JS -->
+      <form id="form-cadastro" novalidate>
+        <label for="nome">Seu Nome Completo:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
 
-                <label for="nome">Seu Nome Completo:</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+        <label for="email">Seu E-mail (Para entrarmos em contato):</label>
+        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required />
 
-                <label for="email">Seu E-mail (Para entrarmos em contato):</label>
-                <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+        <label for="telefone">Seu Telefone:</label>
+        <!-- pattern simples para BR: (XX) XXXXX-XXXX ou apenas dígitos -->
+        <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" pattern="^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$" required />
 
-                <label for="telefone">Seu Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required>
+        <label for="endereco">Seu Endereço (Rua e Número):</label>
+        <input type="text" id="endereco" name="endereco" placeholder="Rua A, 123" required />
 
-                <label for="endereco">Seu Endereço (Rua e Número):</label>
-                <input type="text" id="endereco" name="endereco" placeholder="Rua A, 123" required>
+        <label for="senha">Crie uma Senha Simples, de 4 dígitos:</label>
+        <input type="password" id="senha" name="senha" placeholder="Sua senha secreta" inputmode="numeric" maxlength="4" pattern="^\d{4}$" required />
 
-                <label for="senha">Crie uma Senha Simples, de 4 dígitos:</label>
-                <input type="password" id="senha" name="senha" placeholder="Sua senha secreta" required>
+        <button type="submit" class="botao-azul botao-cadastro">Completar Cadastro e Iniciar!</button>
 
-                <button type="submit" class="botao-azul botao-cadastro">Completar Cadastro e Iniciar!</button>
+        <p class="login-link">
+          Já tem conta? <a href="pagina.html" class="link-amarelo">Fazer Login Aqui!</a>
+        </p>
 
-                <p class="login-link">
-                    Já tem conta? <a href="login.html" class="link-amarelo">Fazer Login Aqui!</a>
-                </p>
-            </form>
-        </div>
-    </section>
+        <div id="mensagem" class="mensagem" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
 
-    <!-- <section class="secao-perguntas">
-        <h2>Passo 2: Vamos Começar! ⭐</h2>
-        <div class="card">
-            <p>Responda com um clique:</p>
+  <section class="secao-retorno">
+    <h2>Fim da Etapa! ✅</h2>
+    <div class="card">
+      <a href="pagina.html" class="botao-retorno">Ir para o Site Principal</a>
+    </div>
+  </section>
 
-            <h3>Você já usou um computador ou celular hoje?</h3>
-            <div class="botoes-resposta">
-                <button class="botao-amarelo">Sim! 😄</button>
-                <button class="botao-azul">Ainda Não. 😴</button>
-            </div>
+  <footer class="rodape">
+    <p>© 2025 - Feito para quem está começando.</p>
+  </footer>
 
-            <h3>O que você mais gosta de fazer?</h3>
-            <div class="botoes-resposta">
-                <button class="botao-amarelo">Aprender coisas novas!</button>
-                <button class="botao-azul">Descansar um pouco.</button>
-            </div>
+  <script>
+    (function () {
+      const form = document.getElementById('form-cadastro');
+      const mensagemEl = document.getElementById('mensagem');
 
-            <h3>3. Qual destas cores te agrada mais?</h3>
-            <div class="botoes-resposta">
-                <button class="botao-azul">Azul (Paz e Calma) 💙</button>
-                <button class="botao-amarelo">Amarelo (Alegria e Sol) 💛</button>
-            </div>
+      function showMessage(text, tipo = 'erro') {
+        mensagemEl.textContent = text;
+        mensagemEl.classList.remove('sucesso', 'erro');
+        mensagemEl.classList.add(tipo);
+      }
 
-            <h3>4. Você gostou de clicar nos botões?</h3>
-            <div class="botoes-resposta">
-                <button class="botao-amarelo">Gostei, é fácil!</button>
-                <button class="botao-azul">Preciso de mais treino.</button>
-            </div>
+      function validaCampos(formData) {
+        // Verifica nome
+        if (!formData.get('nome')?.trim()) return 'Por favor, preencha o nome.';
+        // email e telefone são validados pelo próprio input tipo=email/pattern, mas duplicamos uma verificação simples
+        const email = formData.get('email') || '';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Informe um e-mail válido.';
+        const telefone = formData.get('telefone') || '';
+        if (!/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(telefone)) return 'Informe um telefone válido (ex: (11) 91234-5678).';
+        const endereco = formData.get('endereco') || '';
+        if (!endereco.trim()) return 'Informe seu endereço.';
+        const senha = formData.get('senha') || '';
+        if (!/^\d{4}$/.test(senha)) return 'A senha deve ter exatamente 4 dígitos numéricos.';
+        return null; // ok
+      }
 
-            <h3>5. O que você espera aprender hoje?</h3>
-            <div class="botoes-resposta">
-                <button class="botao-azul">Usar a internet melhor.</button>
-                <button class="botao-amarelo">Conhecer o site!</button>
-            </div>
-        </div>
-    </section>
- -->
-    <section class="secao-retorno">
-        <h2>Fim da Etapa! ✅</h2>
-        <div class="card">
-            
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault(); // evitamos envio tradicional
 
-            <a href="index.html" class="botao-retorno">
-                Ir para o Site Principal
-            </a>
+        const fd = new FormData(form);
+        const erro = validaCampos(fd);
+        if (erro) {
+          showMessage(erro, 'erro');
+          return;
+        }
 
-         
-        </div>
-    </section>
+        // Monta objeto com os dados (não guarde senhas reais em localStorage em produção)
+        const dadosCadastro = {
+          nome: fd.get('nome').trim(),
+          email: fd.get('email').trim(),
+          telefone: fd.get('telefone').trim(),
+          endereco: fd.get('endereco').trim(),
+          senha: fd.get('senha').trim(), // aqui só para fluxo de demonstração
+          criadoEm: new Date().toISOString()
+        };
 
-    <footer class="rodape">
-        <p>© 2025 - Feito para quem está começando.</p>
-    </footer>
+        try {
+          // salva os dados localmente para recuperar em login.html se quiser
+          localStorage.setItem('cadastro_temp', JSON.stringify(dadosCadastro));
+          showMessage('Cadastro salvo! Redirecionando para a página...', 'sucesso');
+
+          // pequena espera para o usuário ver a mensagem (1000 ms), depois redireciona
+          setTimeout(function () {
+            // redireciona na mesma aba para login.html
+            window.location.href = 'pagina.html';
+          }, 900);
+        } catch (e) {
+          console.error(e);
+          showMessage('Erro ao salvar dados. Tente novamente.', 'erro');
+        }
+      });
+    })();
+  </script>
 
 </body>
 
